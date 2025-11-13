@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        body{
+            background-image: url("arrier_passe.jpg");
+            background-repeat: no-repeat;
+            background-size: 97vw;
+            color: aliceblue;
+        }
+        .div{
+            margin: 55vw 20vw;
+            border-radius: 10px;
+            padding: 1vw 2vw;
+            background-color: rgb(125, 153, 202, 0.2);
+            box-shadow: 1px 1px 10px 1px, -1px -1px 10px 1px;            
+        } 
+        .nom,.passe{
+            height: 13vw;
+            width: 48vw;
+            border-radius: 10px;
+            margin: 2vw 0vw;
+        }
+        button{
+            height: 10vw;
+            margin: 2vw 15vw;
+            border-radius: 10px;
+            background-color: rgb(146, 43, 18);
+            box-shadow: 1px 1px 10px 1px, -1px -1px 10px 1px;            
+        }
+        input{
+            background-color: rgba(12, 6, 6, 0.3);       
+        }
+        #err{
+            margin: 10px 10vw;
+            color: rgb(218, 22, 22);
+        }
+        #not{
+            display: none;
+        }
+    </style>  
+</head>
+<body>
+    <div class="div" id="not">     
+        <form action="http://localhost:1000/submit" class="fo"  method="post">
+            <br>
+            <input type="ext" name="nom" placeholder="Nom*" class="nom">
+            <br>
+            <input type="text" name="pass" placeholder="Mots de passe*" class="passe">
+            <br>
+            <button type="submit"  class="red">CONNEXION</button>
+        </form>
+    </div>
+    <h4></h4>
+    <script>
+       const form = document.querySelector('.div');
+         window.addEventListener("dblclick", (v) => {
+                v.preventDefault()
+            v = true ?  `${form.id = 'yes'}` : `${form.id = 'not'}`
+            })    
+        const t = document.querySelector(".red"); 
+        t.addEventListener("submit",(e)=>{ console.log(e)})
+    </script>
+</body>
+</html>

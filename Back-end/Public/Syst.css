@@ -1,0 +1,82 @@
+ /*    */
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-image: url("Arrire.jpg");
+            background-size: 100vw;
+
+        }
+        H3{
+            text-align: center;
+            font-size: 5vw;
+            margin-bottom: -5vw;
+        }
+        menu{
+            display: flex;
+            margin-left: -8vw;
+        }
+/* les siniaux */
+        .courant,.batt,.lemps,.ligne{
+            height: 20vw;
+            width: 40vw;
+            margin: 5vw 3vw;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px 1px, -1px -1px 10px 1px;            
+        
+        }
+        .courant{
+            background-color: rgba(58, 60, 20, 0.3);
+            
+        }
+        .batt{
+            background-color: rgb(21, 49, 83, 0.3);
+
+        }
+        .clim{
+            background-color: rgb(77, 77, 77, 0.3);
+            border-radius: 10px;
+            height: 84vw;
+            width: 40vw;
+            margin-left: 3vw;
+            box-shadow: 1px 1px 10px 1px, -1px -1px 10px 1px;            
+
+        }
+        .lemps{
+            background-color: rgba(30, 30, 30, 1);
+        }
+        .ligne{
+            background-color: rgb(246, 100, 19, 0.1);
+            height: 159vw;
+
+        }
+        #p1{
+            margin: 5px 5px;
+            font-size: 2.0vw;
+            background-color: rgb(12, 19, 19, 0.3);
+            padding: 2vw 15vw;
+            border-radius: 10px;
+        }
+       
+/* les élements */       
+        #s1,#s2,#off{
+            height: 5vw;
+            padding: 7vw 18vw;
+        }
+        #s3{
+            height: 9vw;
+            position: absolute;
+            padding: 35vw 14vw;
+            
+        }
+        .ON{
+            color:chartreuse;
+        }
+        .OFF{
+            color: red;
+        }
+        .OB{
+            color: gold;
+        }
+        .LI{
+            background-color: chartreuse;
+        }

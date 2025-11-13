@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src":"app.js",
+            "use":"@vercel/node"
+        },{
+            "src":"Back-end/Public",
+            "use":"@vercel/static"
+        }
+    ]
+}
