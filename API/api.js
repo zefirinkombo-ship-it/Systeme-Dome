@@ -30,8 +30,9 @@ POST.post('/submit/api', ParsJson, ur, (req,res) => {
     
 POST.post("/api",ParsJson,ur,(req,res) => {
     const r = '{"Salut": "nirva"}'
-    res.json(r).status(400)
+    res.json(r).status(203)
     console.log('Login Serveur')
 })
 
 module.exports = POST
+
