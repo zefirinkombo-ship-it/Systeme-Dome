@@ -13,10 +13,11 @@ const app = express()
     app.set("view engine", "ejs")
     app.use(express.static("./Back-end/Public"))
     
-    const PORT = process.env.PORT || 3000
+    const PORT = process.env.PORT || 8080
     app.listen(PORT , () => {
         console.log('Serveur en ligne')
 })
 
  
+
 
