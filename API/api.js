@@ -36,3 +36,4 @@ POST.post("/api",ParsJson,ur,(req,res) => {
 
 module.exports = POST
 
+
