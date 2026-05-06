@@ -1,23 +1,27 @@
-const bodyParser = require("body-parser")
-const express = require('express')
-const lien = require('./RED/Red')
-const Api = require('./API/api')
+const express = require("express");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, { cors : {origin: "*"} });
 
-const app = express()
+io.on("connection", (socket) => {
 
-    app.use(lien)
-    app.use(Api)
+      console.log("client connected :", socket.id);
 
-    app.set("views","./Back-end")
-    app.set("view engine", "ejs")
-    app.use(express.static("./Back-end/Public"))
-    
-    const PORT = process.env.PORT || 8080
-    app.listen(PORT , () => {
-        console.log('Serveur en ligne')
-})
+  socket.on("hello", (data) => {
 
- 
+      console.log("Message : ",data); 
+    io.emit("hello", data);
+  });
 
+  socket.on("disconnect", () => {
+      console.log("client disconnected :", socket.id);
+  });
 
+});
+
+httpServer.listen(3000, () => {
+    console.log("Server en écoute au port 3000");
+});
