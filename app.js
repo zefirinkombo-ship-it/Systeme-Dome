@@ -3,7 +3,7 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 
 const {LireEtat, EcrireEtat } = require('./Etat_File')
-const PORT || 8080
+
 
 const app = express();
 const httpServer = createServer(app);
@@ -29,6 +29,9 @@ io.on("connection", (socket) => {
   });
 
 });
+
+const PORT = process.env.PORT || 8080;
+
 httpServer.listen(PORT, () => {
         console.log("Server en écoute au port 3000");
 });
