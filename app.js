@@ -12,7 +12,7 @@ const io = new Server(httpServer, { cors : {origin: "*"} });
 io.on("connection", (socket) => {
         console.log("client connected :", socket.id);
         const etat = LireEtat();
-        socket.emit("Reponces", etat);
+        socket.emit("Etat", etat);
 
   socket.on("Message", (data) => {
         console.log("Message : ",data); 
