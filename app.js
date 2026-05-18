@@ -7,19 +7,21 @@ const {LireEtat, EcrireEtat } = require('./Etat_File')
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, { cors : {origin: "*"} });
+const io = new Server(httpServer, { 
+        cors : {origin: "*"}, 
+        connectionStateRecovery: {
+                maxDisconnectionDuration: 2 * 60 * 1000,
+                skipMiddlewares: true
+        }
+});
 
 io.on("connection", (socket) => {
         console.log("client connected :", socket.id);
         const etat = LireEtat();
+        socket.emit("Requete", etat);
         
-        const t = setTimeout( () => {
-                socket.emit("Requete", etat);
-        }, 5000);
-
   socket.on("Message", (data) => {
         console.log("Message : ",data); 
-        
   });
   
 
