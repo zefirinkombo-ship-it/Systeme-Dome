@@ -13,7 +13,7 @@ io.on("connection", (socket) => {
         console.log("client connected :", socket.id);
         const etat = LireEtat();
         
-        const t = setInterval( () => {
+        const t = setTimeout( () => {
                 socket.emit("Requete", etat);
         }, 5000);
 
