@@ -12,7 +12,10 @@ const io = new Server(httpServer, { cors : {origin: "*"} });
 io.on("connection", (socket) => {
         console.log("client connected :", socket.id);
         const etat = LireEtat();
-        socket.emit("Requete", etat);
+        
+        const t = setInterval( () => {
+                socket.emit("Requete", etat);
+        }, 2000);
 
   socket.on("Message", (data) => {
         console.log("Message : ",data); 
