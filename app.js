@@ -20,8 +20,8 @@ io.on("connection", (socket) => {
         const etat = LireEtat();
         socket.emit("Requete", etat);
         
-  socket.on("Message", (data) => {
-        console.log("Message : ",data); 
+  socket.on("Nirvana", (socket.id) => {
+       socket.emite('vana',socket.id)
   });
   
 
