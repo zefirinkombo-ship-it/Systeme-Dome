@@ -15,7 +15,7 @@ io.on("connection", (socket) => {
         
         const t = setInterval( () => {
                 socket.emit("Requete", etat);
-        }, 2000);
+        }, 5000);
 
   socket.on("Message", (data) => {
         console.log("Message : ",data); 
