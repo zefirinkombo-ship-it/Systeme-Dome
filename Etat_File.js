@@ -10,7 +10,6 @@ function LireEtat() {
 function EcrireEtat(etat) {
     fs.writeFileSync(file, JSON.stringify(etat, null, 2), 'utf-8');
 }
-
 module.exports = {
     LireEtat,
     EcrireEtat
