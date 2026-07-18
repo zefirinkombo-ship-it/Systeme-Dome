@@ -25,7 +25,7 @@ io.on("connection", (socket) => {
 
         socket.emit('Voltage', Voltage);
         
-  socket.on("Donner", (data) => {
+  socket.on("Eps_Send_Data", (data) => {
         EcrireEtat(data);
         io.emit("New_Requete", data);
   });
