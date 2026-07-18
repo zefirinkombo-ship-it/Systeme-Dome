@@ -40,5 +40,5 @@ io.on("connection", (socket) => {
 const PORT = process.env.PORT || 8080;
 
 httpServer.listen(PORT, () => {
-        console.log("Server en écoute au port 3000");
+        console.log("Server en écoute au port 8080");
 });
