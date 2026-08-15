@@ -15,19 +15,48 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-        console.log("client connected :", socket.id);
-        const etat = LireEtat();
-        socket.emit("Requete", etat);
-        const Voltage = {
-                BatV : 12,
-                PanV : 11
-        }
+  console.log("client connected :", socket.id);
 
-        socket.emit('Voltage', Voltage);
-        
-  socket.on("Eps_Send_Data", (data) => {
-        EcrireEtat(data);
-        io.emit("New_Requete", data);
+  const etat = LireEtat();
+  socket.emit("Etat", etat);
+
+  socket.on("connect", () => {
+    console.log("Socket connecté :", socket.id);
+  });
+
+  socket.on("esp-data", (data) => {
+    let payload = data;
+
+    if (typeof payload === "string") {
+      try {
+        payload = JSON.parse(payload);
+      } catch (err) {
+        console.warn("Payload Socket.IO chaîne invalide :", payload);
+        return;
+      }
+    }
+
+    if (!payload || typeof payload !== "object") {
+      console.warn("Payload Socket.IO invalide :", data);
+      return;
+    }
+
+    console.log("Données ESP via Socket.IO :", JSON.stringify(payload));
+    EcrireEtat(payload);
+
+    const control = {
+      R_Snel: { Event: true, Temps: 10 },
+      R_Battery: { Event: false, Temps: 0 },
+      R_Group: { Event: false, Temps: 0 }
+    };
+
+    socket.emit("control", control);
+    console.log("Commande envoyée à l'ESP32 :", JSON.stringify(control));
+  });
+
+  socket.on("hello", (data) => {
+    console.log("Message reçu :", data);
+    io.emit("hello", data);
   });
 
   socket.on("disconnect", () => {
