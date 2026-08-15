@@ -18,7 +18,7 @@ io.on("connection", (socket) => {
   console.log("client connected :", socket.id);
 
   const etat = LireEtat();
-  socket.emit("Etat", etat);
+ // socket.emit("Etat", etat);
 
   socket.on("connect", () => {
     console.log("Socket connecté :", socket.id);
@@ -50,8 +50,8 @@ io.on("connection", (socket) => {
       R_Group: { Event: false, Temps: 0 }
     };
 
-    socket.emit("control", control);
-    console.log("Commande envoyée à l'ESP32 :", JSON.stringify(control));
+   /* socket.emit("control", control);
+    console.log("Commande envoyée à l'ESP32 :", JSON.stringify(control));*/
   });
 
   socket.on("hello", (data) => {
