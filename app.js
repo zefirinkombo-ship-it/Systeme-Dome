@@ -8,13 +8,14 @@ const app = express();
 app.use(express.json({ limit: "1mb" }));
 
 const httpServer = createServer(app);
+
 const io = new Server(httpServer, {
   cors: { origin: "*" },
   transports: ["websocket", "polling"],
-  allowEIO3: true,
   pingInterval: 25000,
-  pingTimeout: 20000 
+  pingTimeout: 60000,
 });
+
 
 app.get("/", (req, res) => {
   res.send("Serveur ESP OK");
