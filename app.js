@@ -53,6 +53,11 @@ io.on("connection", (socket) => {
    /* socket.emit("control", control);
     console.log("Commande envoyée à l'ESP32 :", JSON.stringify(control));*/
   });
+  socket.on("capteurs", (data) => {
+    handleEspData(data);
+    console.log(data.volts.pin32, data.volts.pin34, data.volts.pin35);
+    socket.emit("commande", { led: data.volts.pin32 > 2000 });
+  });
 
   socket.on("hello", (data) => {
     console.log("Message reçu :", data);
