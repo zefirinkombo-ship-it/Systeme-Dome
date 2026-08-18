@@ -13,7 +13,7 @@ const io = new Server(httpServer, {
   transports: ["websocket", "polling"],
   allowEIO3: true,
   pingInterval: 25000,
-  pingTimeout: 20000
+  pingTimeout: 20000 
 });
 
 app.get("/", (req, res) => {
