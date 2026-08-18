@@ -68,17 +68,28 @@ io.on("connection", (socket) => {
   });
 
   
-  socket.on("capteurs", (data) => {
+   socket.on("capteurs", (data) => {
     handleEspData(data);
-    console.log(data.volts.pin32, data.volts.pin34, data.volts.pin35);
-    socket.emit("commande", { led: data.volts.pin32 > 2000 });
-  });
 
-  socket.on("disconnect", () => {
+    const volts = (data && data.volts) || {};
+    const brut  = (data && data.brut)  || {};
+    console.log("volts:", volts.pin32, volts.pin34, volts.pin35);
+
+  // seuil en volts (pas en unites ADC)
+    socket.emit("commande", { led: (volts.pin32 || 0) > 1.6 });
+
+  // exemple de commande periodique vers l'ESP
+    socket.emit("control", {
+    R_Snel:    { Event: true,  Temps: 10 },
+    R_Battery: { Event: false, Temps: 2 },
+    R_Group:   { Event: false, Temps: 5 }
+  });
+});
+  
+socket.on("disconnect", () => {
         console.log("client disconnected :", socket.id);
   });
-        
-
+  
 });
 
 const PORT = process.env.PORT || 8080;
