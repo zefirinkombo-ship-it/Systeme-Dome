@@ -16,8 +16,6 @@ const io = new Server(httpServer, {
   pingTimeout: 20000
 });
 
-const PORT = 8080;
-
 app.get("/", (req, res) => {
   res.send("Serveur ESP OK");
 });
